@@ -10,6 +10,26 @@ function contentSlider() {
 contentSlider()
 setInterval(contentSlider , 2000)
 
+function initAdmin() {
+    let test = JSON.parse(localStorage.getItem('SignUp'))
+
+    // localStorage.removeItem('SignUp')
+    if(test == null) {
+        let Account = []
+        let signUpAccount = {}
+
+        signUpAccount.name = 'Phạm Tấn Đạt'
+        signUpAccount.email = 'phamtandat655@gmail.com'
+        signUpAccount.phone = '0394047655'
+        signUpAccount.address = 'BC , TPHCM'
+        signUpAccount.password = '12345'
+
+        Account.push(signUpAccount)
+        localStorage.setItem('SignUp' , JSON.stringify(Account))
+    }
+}
+initAdmin()
+
 function productItem() {
     const products = [{
         image : 'https://cdn.tgdd.vn/Products/Images/42/251192/iphone-14-pro-max-vang-thumb-600x600.jpg',
