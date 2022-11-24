@@ -1775,18 +1775,20 @@ function handleFormStore () {
     const customerList = document.querySelector('.customer__list')
 
     let arrCustomer = JSON.parse(localStorage.getItem('SignUp'))
-    arrCustomer.forEach((customer,index) => {
-        if(customer.email != 'phamtandat655@gmail.com') {
-            let tr = document.createElement('tr')
-            tr.innerHTML = `<td class="customer__number"> ${index} </td>
-            <td class="customer__name"> ${customer.name} </td>
-            <td class="customer__mail"> ${customer.email} </td>
-            <td class="customer__phone"> ${customer.phone} </td>
-            <td > <div class="customer__delete btn-delete">Xóa</div> </td>`
-    
-            customerList.appendChild(tr)
-        }
-    })
+    if(arrCustomer) {
+        arrCustomer.forEach((customer,index) => {
+            if(customer.email != 'phamtandat655@gmail.com') {
+                let tr = document.createElement('tr')
+                tr.innerHTML = `<td class="customer__number"> ${index} </td>
+                <td class="customer__name"> ${customer.name} </td>
+                <td class="customer__mail"> ${customer.email} </td>
+                <td class="customer__phone"> ${customer.phone} </td>
+                <td > <div class="customer__delete btn-delete">Xóa</div> </td>`
+        
+                customerList.appendChild(tr)
+            }
+        })
+    }
 
     function removeCustomer () {
         const customerDeleteBtns = document.querySelectorAll('.customer__delete')
