@@ -26,6 +26,13 @@ function initAdmin() {
 
         Account.push(signUpAccount)
         localStorage.setItem('SignUp' , JSON.stringify(Account))
+
+        // khởi tạo responsive khi resize
+        if(window.innerWidth > 1024) {
+            localStorage.setItem('reloadResponsive' , false)
+        if(window.innerWidth < 1024) {
+            localStorage.setItem('reloadResponsive' , true)
+        }
     }
 }
 initAdmin()
@@ -1897,17 +1904,19 @@ function handleOrder () {
     let listOrder = JSON.parse(localStorage.getItem('order'))
     const orderTBody = document.querySelector('.order__tbody')
     
-    listOrder.forEach((orderArr,index) => {
-        let tr = document.createElement('tr')
-        tr.innerHTML = `<td class="order__number"> ${index + 1} </td>
-        <td class="order__name"> ${orderArr[orderArr.length - 1].customer} </td>
-        <td class="order__total"> ${orderArr[orderArr.length - 1].sum} </td>
-        <td style="height: 60px; min-width: 200px; padding-left: 10px;" class="order__state">
-            ${orderArr[orderArr.length - 1].state}
-        </td>`
-        
-        orderTBody.appendChild(tr)
-    })
+    if(listOrder) {
+        listOrder.forEach((orderArr,index) => {
+            let tr = document.createElement('tr')
+            tr.innerHTML = `<td class="order__number"> ${index + 1} </td>
+            <td class="order__name"> ${orderArr[orderArr.length - 1].customer} </td>
+            <td class="order__total"> ${orderArr[orderArr.length - 1].sum} </td>
+            <td style="height: 60px; min-width: 200px; padding-left: 10px;" class="order__state">
+                ${orderArr[orderArr.length - 1].state}
+            </td>`
+            
+            orderTBody.appendChild(tr)
+        })
+    }
 
     document.querySelectorAll('.order__state').forEach((state , index) => {
         state.addEventListener('click' , (e) => {
