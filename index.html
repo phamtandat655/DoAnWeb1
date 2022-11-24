@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do an</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="/qlsanpham.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/responsive.css">
+    <link rel="shortcut icon" href="./image/logo.png" type="image/x-icon">
+</head>
+<body>
+    <div id="header">
+        <div class="header__container">
+            <div class="header__about">
+                <div class="header__about-sm">
+                    <a href="https://www.facebook.com/" class="header__about-sm-fb">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" class="header__about-sm-insta">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" class="header__about-sm-ytb">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+
+                <div class="header__about-info">
+                    <!-- Nếu là admin mới xuất hiện bánh răng -->
+                    <div class="header__about-info-setting">
+                        <a href="#"> <i class="fa-solid fa-gear"></i></a>
+                    </div>
+                    <div class="header__about-info-signup" onclick="openForm_Register()">ĐĂNG KÝ</div>
+                    <div class="header__about-info-signin" onclick="openForm_Login()">ĐĂNG NHẬP</div>
+                    <div class="header__about-info-logout"><i class="fa-solid fa-right-from-bracket"></i></div>
+                    <div class="header__about-info-name"><p></p></div>
+                    <div class="header__about-info-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div class="header__about-info-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Nhập sản phẩm muốn tìm..." class="header__about-info-search-input hide">
+                    </div>
+                </div>
+            </div>
+
+            <div class="header__menu">
+                <a class="header__logo" href="#">
+                    <img src="/image/logo.png" alt="" class="header__logo-img">
+                </a>
+                <div class="header__menu-phone">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="header__menu-list hide-menu">
+                    <div class="header__menu-item item-products" id="home">
+                        <a href="#"><p>TRANG CHỦ</p></a>
+                    </div>
+                    <div class="header__menu-item item-products" id="iphone"><p>IPHONE</p></div>
+                    <div class="header__menu-item item-products" id="oppo"><p>OPPO</p></div>
+                    <div class="header__menu-item item-products" id="samsung"><p>SAMSUNG</p></div>
+                    <div class="header__menu-item item-products" id="accessory"><p>PHỤ KIỆN</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content__slide">
+        <!-- <img src="./image/slider1.jpg" alt="" class="content__slide-img">
+        <img src="./image/slider2.jpg" alt="" class="content__slide-img">
+        <img src="./image/slider3.jpg" alt="" class="content__slide-img"> -->
+
+        <img src="./image/slide1.jpg" alt="" class="content__slide-img">
+        <img src="./image/slide2.jpg" alt="" class="content__slide-img">
+    </div>
+
+    <div id="content">
+
+        <div class="content__product-recommend">
+            <h2>SẢN PHẨM NỔI BẬT</h2>
+            <span class="content__product-recommend-span"></span>
+        </div>
+
+        <div class="content__product">
+            <!-- <div class="content__product--item">
+                <img src="/Javascript/Luxstay/img/outstandingPlace/DaLat.png" alt="" class="content__product--item-img">
+                <h2 class="content__product--item-name">ABCDASDASDASDASD</h2>
+                <p class="content__product--item-price">Đây là ạdnk asnd nkajs njkdj aksndjk jkaskjạ dnkasn dnkajs njkdj aksndjkj kaskj</p>
+            </div> -->
+        </div>
+
+        <div class="content__product--detail">
+            <div class="content__product--detail-container">
+                <div class="content__product--detail-close">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+                <div class="content__product--detail-img">
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/251192/iphone-14-pro-max-vang-thumb-600x600.jpg" alt="">
+                </div>
+                <div class="content__product--detail-all">
+                    <div class="content__product--detail-info">
+                        <h1 class="content__product--detail-info-name">Điện thoại iPhone 14 Pro Max 128GB</h1>
+                        <h2 class="content__product--detail-info-price">33.590.000₫</h2>
+                        <p class="content__product--detail-info-desc">Cuối cùng thì chiếc iPhone 14 Pro Max cũng đã chính thức lộ diện tại sự kiện ra mắt thường niên vào ngày 08/09 đến từ nhà Apple, kết thúc bao lời đồn đoán bằng một bộ thông số cực kỳ ấn tượng cùng vẻ ngoài đẹp mắt sang trọng. Từ ngày 14/10/2022 người dùng đã có thể mua sắm các sản phẩm iPhone 14 series với đầy đủ phiên bản tại Thế Giới Di Động.</p>
+                    </div>
+                    <div class="content__product--detail-quantity-wrap">
+                        <span id="detail-minus"><i class="fa-solid fa-minus"></i></span>
+                        <span class="content__product--detail-quantity">1</span>
+                        <span id="detail-plus"><i class="fa-solid fa-plus"></i></span>
+                    </div>
+                    <button class="content__product--detail-btn">THÊM VÀO GIỎ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phân trang -->
+        <div class="pagination">
+            <!-- <div class="page active">1</div>
+            <div class="page">2</div> -->
+        </div>
+
+        <div class="content__blog">
+            <div class="content__blog-title">
+                <h2>TIN TỨC CÔNG NGHỆ</h2>
+                <span class="content__blog-span"></span>
+            </div>
+
+            <div class="content__blog-wrap">
+                <div class="content__blog--item">
+                    <a href="https://cellphones.com.vn/sforum/mo-hop-xiaomi-12s-ultra-gia-chi-20-trieu-nhung-ngon-hon-iphone-samsung" class="content__blog--item-link">
+                        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2022/11/cover-12-350x250.jpg" alt="" class="content__blog--item-img">
+                        <h3 class="content__blog--item-title">Mở hộp và trên tay Xiaomi 12S Ultra: Giá chỉ 20 triệu nhưng “ngon” hơn iPhone, Samsung</h3>
+                    </a>
+                </div>
+                <div class="content__blog--item">
+                    <a href="https://cellphones.com.vn/sforum/samsung-tiep-tuc-da-deu-apple-khong-co-smartphone-man-hinh-gap-trong-video-quang-cao-moi" class="content__blog--item-link">
+                        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2022/11/quang-cao-Samsung-face-350x250.jpeg" alt="" class="content__blog--item-img">
+                        <h3 class="content__blog--item-title">Samsung tiếp tục “đá đểu” Apple không có smartphone màn hình gập trong video quảng cáo mới</h3>
+                    </a>
+                </div>
+                <div class="content__blog--item">
+                    <a href="https://cellphones.com.vn/sforum/day-la-thong-so-chi-tiet-cum-camera-khung-cua-galaxy-s23-ultra" class="content__blog--item-link">
+                        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2022/11/GALAXY-S23-ULTRA-camera-face-1-350x250.jpeg" alt="" class="content__blog--item-img">
+                        <h3 class="content__blog--item-title">Đây là thông số chi tiết cụm camera khủng của Galaxy S23 Ultra</h3>
+                    </a>
+                </div>
+                <div class="content__blog--item">
+                    <a href="https://cellphones.com.vn/sforum/oppo-a98-se-som-ra-mat-voi-man-hinh-cong-chip-snapdragon-695-va-camera-108mp" class="content__blog--item-link">
+                        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2022/11/OPPO-A98-face-350x250.jpeg" alt="" class="content__blog--item-img">
+                        <h3 class="content__blog--item-title">OPPO A98 sẽ sớm ra mắt với màn hình cong, chip Snapdragon 695 và camera 108MP</h3>
+                    </a>
+                </div>
+                <div class="content__blog--item">
+                    <a href="https://cellphones.com.vn/sforum/apple-vua-qua-chua-cong-bo-5-dong-san-pham-nay-nhung-se-som-thoi" class="content__blog--item-link">
+                        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2022/11/san-pham-apple-6-350x250.jpg" alt="" class="content__blog--item-img">
+                        <h3 class="content__blog--item-title">Apple vừa qua chưa công bố 5 dòng sản phẩm này, nhưng sẽ sớm thôi</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="content__blog-btn">
+                <button id="content__blog-btn-left">
+                    <
+                </button>
+                <button id="content__blog-btn-right">
+                    >
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart">
+        <div class="cart-wrap">
+            <h1 class="cart--header">GIỎ HÀNG CỦA BẠN</h1>
+            <div class="cart__list">  
+                <h2 class="cart-empty" style="text-align: center; margin-top: 50px;">Giỏ hàng của bạn còn trống</h2>
+            </div>
+            <button class="buyall-btn">THANH TOÁN TẤT CẢ</button>
+        </div>
+    </div>
+
+    <div id="footer">
+        <span class="footer-span"></span>
+        <div class="footer-wrap">
+            <div class="footer__info">
+                <div class="footer__info-logo">
+                    <img src="./image/logo.png" alt="" class="footer__info-logo-img">
+                </div>
+                <div class="footer__info-socialmeadia">
+                    <a href="https://www.facebook.com/" class="footer__info-socialmeadia-link">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" class="footer__info-socialmeadia-link">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://twitter.com/?lang=vi" class="footer__info-socialmeadia-link">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" class="footer__info-socialmeadia-link">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer__email">
+                <h4 class="footer__email-header">ĐĂNG KÝ NHẬN TIN</h4>
+                <p class="footer__email-title">- Đăng ý Email của bạn để trở thành khách hàng đầu tiên được nhận thông tin ưu đãi mới nhất</p>
+                <input type="email" class="footer__email-email" placeholder="Nhập email của bạn...">
+            </div>
+            <div class="footer__address">
+                <h4 class="footer__address-header">ĐỊA CHỈ CỬA HÀNG</h4>
+                <p class="footer__address-title">273 An Dương Vương , Quận 5 , TP HỒ CHÍ MINH</p>
+            </div>
+        </div>
+        <span class="footer-span footer-span2"></span>
+    </div>
+
+    <div class="modal-wrap">
+        <div class="modal" id="modal">
+            <div class="modal__overlay"> </div>
+            <div class="modal__body" id="modal__body">
+                    <!-- form login -->
+                    <form name="formdangnhap" id="dangnhap" action="" method="get" >
+                        <div class="auth-form" id="login">
+                            <div class = "form-button-X">
+                                <button class="btnX" type = "button" onclick="close_Form()"> X </button>
+                            </div>
+
+                            <div class="auth-form__header">
+                                <p class="auth-form__heading"> ĐĂNG NHẬP </p>
+                            </div>
+                
+                            <div class="auth-form__container">
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group" >
+                                        <input type="text" class="auth-form_input" id="auth-form_input-email-signin" name="sdtoremail" placeholder="Vui lòng nhập email" required/>
+                                        <small></small>
+                                    </div>
+        
+                                    <div class="auth-form__group" style="margin-top: 20px">
+                                        <input type="password" class="auth-form_input" id="auth-form_input-password-signin" name="password" placeholder="Vui lòng nhập mật khẩu" required />
+                                        <small></small>
+                                    </div>
+                                </div>
+                                
+                                <!-- <div class="auth-form__aside" >
+                                    <div class="auth-form__sales">
+                                        <input type="checkbox" class="auth-form__sales-input" name="salses"> Người bán hàng ?</input>
+                                    </div>
+                                    <div class="auth-form__help">
+                                        <a href="#" class="auth-from__help-link"> Quên mật khẩu? </a>
+                                    </div>
+                                </div> -->
+                                
+                                <div class="auth-form__controls">
+                                    <button class="btn btn--dangnhap" type="submit"> ĐĂNG NHẬP </button>
+                                </div>
+                            </div>
+
+                            <div class="auth-form__register">
+                                Bạn chưa có tài khoản? 
+                                <a href="#" onclick="openForm_Register()">Đăng ký</a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- form register -->
+                    <form name="formdangky" id="dangky" action="#" method="get" >
+                        <div class="auth-form" id="register">
+                            <div class = "form-button-X">
+                                <button class="btnX" type = "button" onclick="close_Form()" > X </button>
+                            </div>
+                            <div class="auth-form__header">
+                                <p class="auth-form__heading"> ĐĂNG KÝ </p>
+                            </div>
+                            <div class="auth-form__container">
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group" >
+                                        <input required type="text" class="auth-form_input" id="auth-form_input-name" name="name" placeholder="Họ và tên"/>
+                                        <small></small>
+                                    </div>
+                
+                                    <div class="auth-form__group" style="margin-top: 20px">
+                                        <input required type="text" class="auth-form_input" id="auth-form_input-phone" name="phone_number" placeholder="Số điện thoại"  />
+                                        <small></small>
+                                    </div>
+
+                                    <div class="auth-form__group" style="margin-top: 20px">
+                                        <input required type="text" class="auth-form_input" id="auth-form_input-address" name="phone_number" placeholder="Địa chỉ"  />
+                                        <small></small>
+                                    </div>
+                
+                                    <div class="auth-form__group" style="margin-top: 20px">
+                                        <input required type="email" class="auth-form_input" name="email" id="auth-form_input-email" placeholder="Email" />
+                                        <small></small>
+                                    </div>
+                
+                                    <div class="auth-form__group" style="margin-top: 20px">
+                                        <input required type="password" class="auth-form_input" name="password" id="auth-form_input-password" placeholder="Mật khẩu" />
+                                        <small></small>
+                                    </div>
+                
+                                    <div class="auth-form__group" style="margin-top: 20px">
+                                        <input required type="password" class="auth-form_input" name="password" id="auth-form_input-password-confirm" placeholder="Nhập lại mật khẩu" />
+                                        <small></small>
+                                    </div>
+                                </div>
+                            
+                                <div class="auth-form__controls">
+                                    <button class="btn btn--dangnhap" type="submit"> ĐĂNG KÝ </button>
+                                </div>
+                            </div>
+                            
+                            <div class="auth-form__register">
+                                Bạn đã có tài khoản? 
+                                <a href="#" onclick="openForm_Login()" >Đăng Nhập </a>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="store">
+        <div class="sidebar__wrap hide-sidebar">
+            <nav class="sidebar ">
+                <ul >
+                    <li > 
+                        <a href="#" class="sidebar__home">
+                            <i class="fa-solid fa-house"></i>
+                            Trang chủ
+                        </a>
+                    </li>
+                    <li >
+                        <a href="#" class="sidebar__product" onclick="open_Product()"> 
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            Sản phẩm
+                        </a>
+                    </li>
+                    <li >
+                        <a href="#" class="sidebar__order" onclick="open_Order()">
+                            <i class="fa-regular fa-file-lines"></i>
+                            Đơn hàng
+                        </a>
+                    </li>
+            
+                    <li >
+                        <a href="#" class="sidebar__customer" onclick="open_Customer()">
+                            <i class="fa-solid fa-person-military-pointing"></i>
+                            Khách hàng
+                        </a>
+                    </li>
+                    <!-- <li >
+                        <a href="#" >
+                            <i class="fa-solid fa-circle-info"></i>
+                            Thông tin chi tiết
+                        </a>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- menu trên mobile -->
+        <div class="store__menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <section class="content" >
+            <div class="content__top">
+                <div class="content__top-accountname">
+                    Tên tài khoản
+                </div>
+            </div>
+        
+            <div id="content--style-product"> 
+                <div class="content__mid">
+                    <h1 class="content__mid-header"> DANH SÁCH SẢN PHẨM </h1>
+                    <form name="list-product" action="#" >
+                        <table border="1" class="table">
+                            <thead >
+                                <tr >
+                                    <th > Ảnh </th>
+                                    <th > Tên sản phẩm </th>
+                                    <th > Thương hiệu </th>
+                                    <th > Giá </th>
+                                    <th > Tùy chỉnh </th>
+                                </tr>
+                            </thead>
+            
+                            <tbody class="list__product">
+                                <!-- <tr class="product__tr">
+                                    <td class="product__img" > <img src="https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-xanh-la-thumb-600x600.jpg" alt=""> </td>
+                                    <td class="product__name" > Iphone 13 Pro Max </td>
+                                    <td class="product__brand" > Iphone </td>
+                                    <td class="product__price" > 28.490.000đ </td>
+                                    <td class="product__remove" > Xóa</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            
+                <div class="content__bottom">
+                    <!-- <div class="content__bottom-left">
+                        TÌM KIẾM SẢN PHẨM
+                    </div> -->
+                    <div class="content__bottom-right">
+                        THÊM SẢN PHẨM
+                        <div class="content__bottom-right-select">
+                            <h2> Chọn loại sản phẩm </h2>
+                            <select id="loaisanpham" onchange="NoForm()"> 
+                                <option value="none" selected> Loại sản phẩm </option>
+                                <option value="Điện thoại" > Điện thoại </option>
+                                <option value="Phụ kiện"> Phụ kiện </option>
+                            </select>
+                        </div>
+            
+                        <div class="content__bottom-right-addproduct content__bottom-right-addproduct--form1" id="content__bottom-right-addproduct--form1">
+                            <div class="content__bottom-right-addproduct-line">
+                                <hr style="margin-top: 20px" />
+                            </div>
+                            <div class="content__bottom-right-addproduct-form" >
+                                <form class="form__phone" action="#" method="get">
+                                    <div >
+                                        Tên sản phẩm
+                                        <br />
+                                        <input type="text" class="phone__name"/>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Thương hiệu
+                                        <select class="phone__brand">
+                                            <option value="Iphone" selected> Iphone </option>
+                                            <option value="SamSung"> SamSung </option>
+                                            <option value="Oppo"> Oppo </option>
+                                        </select>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Giá
+                                        <br />
+                                        <input type="text" class="phone__price"/>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Mô tả
+                                        <br />
+                                        <input type="text" class="phone__desc"/>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Đường dẫn ảnh
+                                        <br />
+                                        <input type="file" class="phone__img"/>
+                                    </div>
+                                    <div class="content__bottom-right-addproduct-form-btn">
+                                        <button class="content__bottom-right-addproduct-form-btn--style" type="reset"> Làm mới </button>
+                                        <button class="content__bottom-right-addproduct-form-btn--style" type="submit"> Thêm </button>
+                                    </div>
+                                </form>
+                             </div>
+                        </div>
+                        <div class="content__bottom-right-addproduct content__bottom-right-addproduct--form2" id="content__bottom-right-addproduct--form2">
+                            <div class="content__bottom-right-addproduct-line">
+                                <hr style="margin-top: 20px" />
+                            </div>
+                            <div class="content__bottom-right-addproduct-form" >
+                                <form class="form__accessory" action="#" method="get">
+                                    <div >
+                                        Tên sản phẩm
+                                        <br />
+                                        <input type="text" class="accessory__name"/>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Giá
+                                        <br />
+                                        <input type="text" class="accessory__price"/>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Mô tả
+                                        <br />
+                                        <input type="text" class="accessory__desc"/>
+                                    </div>
+                                    <div style="padding-top: 20px">
+                                        Đường dẫn ảnh
+                                        <br />
+                                        <input type="file" class="accessory__img"/>
+                                    </div>
+                                    <div class="content__bottom-right-addproduct-form-btn">
+                                        <button class="content__bottom-right-addproduct-form-btn--style" type="reset"> Làm mới </button>
+                                        <button class="content__bottom-right-addproduct-form-btn--style" type="submit"> Thêm </button>
+                                    </div>
+                                </form>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content__mid--order" id="content--style-order">
+                <h1 class="content__mid-header"> DANH SÁCH ĐƠN HÀNG </h1>
+                <form name="list-product" action="#" class="order__form">
+                    <table border="1">
+                        <thead >
+                            <tr >
+                                <th > STT </th>
+                                <th > Khách hàng </th>
+                                <th > Tổng tiền </th>
+                                <th > Trạng thái </th>
+                            </tr>
+                        </thead>
+                        <tbody class="order__tbody">
+                            <!-- <tr >
+                                <td class="order__number"> 1 </td>
+                                <td class="order__name"> Hoàng Ngọc Minh </td>
+                                <td class="order__total"> 1000000 </td>
+                                <td style="height: 60px; width: 80px; padding-left: 10px;">
+                                    <div class="toggle-button">
+                                        <input type="checkbox" id="toggle-btn-1" />
+                                        <label for="toggle-btn-1" ></label>
+                                    </div>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </form>
+
+                <div class="order__detail">
+                    <div class="order__info-wrap">
+                        <!-- <div class="order__info-close"><i class="fa-solid fa-x"></i></div>
+                        <h3 class="order__info-header">THÔNG TIN ĐƠN HÀNG</h3>
+                        <div class="order__info--product">
+                            <div><h4>SẢN PHẨM ĐÃ ĐẶT</h4></div>
+                            <ul class="order__info--product-list">
+                                <li class="order__info--product-item">
+                                    <p class="order__info--product-item-name">Điện thoại OPPO Reno8 Pro 5G</p>
+                                    x<p class="order__info--product-item-quantity">1</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="order__info--customer">
+                            <h4>THÔNG TIN KHÁCH HÀNG</h4>
+                            <div class="order__info--customer-name-wrap">
+                                Tên : 
+                                <p class="order__info--customer-name">Phạm Tấn Đạt</p>
+                            </div>
+                            <div class="order__info--customer-phone-wrap">
+                                Số điện thoại : 
+                                <p class="order__info--customer-phone">0394047655</p>
+                            </div>
+                            <div class="order__info--customer-address-wrap">
+                                Địa chỉ : 
+                                <p class="order__info--customer-address">BC , TPHCM</p>
+                            </div>
+                        </div>
+
+                        <div class="order__info--total-wrap">
+                            Tổng giá trị : <p class="order__info--total">353.000đ</p>
+                        </div>
+                        <div class="order__info--print">
+                            <button class="order__info--print-btn" onclick="window.print()">Xuất đơn hàng</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="content__mid--customer" id="content--style-customer">
+                <h1 class="content__mid-header"> DANH SÁCH KHÁCH HÀNG </h1>
+                <form name="list-product" action="#" >
+                    <table border="1">
+                        <thead >
+                            <tr >
+                                <th > STT </th>
+                                <th > Họ và tên </th>
+                                <th > Email </th>
+                                <th > Số điện thoại</th>
+                                <th > Tùy chỉnh </th>
+                            </tr>
+                        </thead>
+                        <tbody class="customer__list">
+                            <tr >
+                                <!-- <td class="customer__number"> 1 </td>
+                                <td class="customer__name"> Hoàng Ngọc Minh </td>
+                                <td class="customer__mail"> ngocminh1569@gmail.com </td>
+                                <td class="customer__phone"> 0123569874 </td>
+                                <td > <div class="customer__delete btn-delete">Xóa</div> </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

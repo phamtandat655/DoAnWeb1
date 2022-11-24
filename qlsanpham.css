@@ -1,0 +1,491 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    min-height: 150vh;
+}
+
+nav {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(0, 0, 1);
+    display: flex;
+    /*align-items:  center;*/
+    border-right: 2px solid rgba(0, 0, 0, 1);
+    z-index: 1000;
+    /*transition: ease-in-out 0.5s;*/
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+nav ul li a {
+    width: 100%;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 15px;
+    transition: linear 0.1s;
+}
+
+nav ul li a i {
+    margin: 0 20px;
+    color: white;
+    font-size: 1.2em;
+    transition: linear 0.2s;
+}
+
+nav ul li a:hover {
+    background: white;
+    color: black;
+}
+
+nav ul li a:hover i {
+    color: black;
+}
+
+.content {
+  position: relative;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: ease-in-out 0.5s;
+}
+
+.content .content__top {
+    position: absolute;
+    border: solid 2px white;
+    top: 0px;
+    height: 80px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(16, 25, 11);
+}
+
+.content .content__top .content__top-accountname {
+    position: absolute;
+    border: solid 1px black;
+    width: auto;
+    top: 20px;
+    right: 20px;
+    border-radius: 5px;
+    background-color: rgb(128, 128, 128);
+    padding: 5px;
+}
+.content__top-accountname {
+    color: white;
+}
+
+#content--style-product {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    left: 0px;
+}
+
+.content .content__mid {
+    border: solid  2px white;
+    /* top: 80px; */
+    width: 100%;
+    height: 700px;
+    margin-top: 30px;
+    font-size: 1.5em;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(16, 25, 11);
+}
+
+.content__mid-header {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.content__mid table {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.content__mid th{
+    padding: 5px;
+}
+
+.content__mid img{
+    width: 70px;
+    padding-top: 5px;
+}
+
+.content__bottom {
+    margin-top: 40px;
+    top: 850px;
+    width: 100%;
+    height: 1000px;
+}
+
+.content__bottom .content__bottom-right {
+    border: solid 2px white;
+    float: left;
+    width: 80%;
+    height: 850px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(16, 25, 11);
+}
+
+.content__bottom-right-select{
+    display: flex;
+    padding-top: 25px;
+    padding-left: 50px;
+    text-align: left;
+    font-size: 1.0rem;
+    font-weight: 0.8;
+}
+
+.content__bottom-right-select h2{
+    font-weight: 600;
+    padding-right: 20px;
+}
+
+.content__bottom-right-select select{
+    border: solid 3px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 1.0rem;
+    font-weight: 300;
+}
+
+
+/* Thêm sản phẩm */
+.content__bottom-right-addproduct-line {
+    margin-top: 20px;
+}
+
+.content__bottom-right-addproduct-form{
+    width: 80%;
+    margin: 20px 100px;
+    text-align: left;
+    font-size: 1.6rem;
+    /* border: 2px solid red; */
+}
+
+.content__bottom-right-addproduct-form input{
+    padding: 5px;
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-bottom: solid 3px black;
+    font-size: 1.0rem;
+}
+
+.content__bottom-right-addproduct-form select {
+    height: 30px;
+    width: 100px;
+    border: solid 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.0rem;
+    font-weight: 300;
+}
+
+
+.content__bottom-right-addproduct-form-btn {
+    margin-top: 40px;
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content__bottom-right-addproduct-form-btn--style {
+    padding: 20px 60px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
+/* ẩn hiện thẻ form1 và form 2 */
+.content__bottom-right-addproduct--form1 {
+    display: none;
+}
+
+.content__bottom-right-addproduct--form2{
+    display: none;
+}
+
+.product__remove:hover {
+    cursor: pointer;
+    color: coral;
+}
+
+.product__name {
+    max-width: 500px;
+    padding: 0 20px;
+    
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.content__mid {
+    height: 800px;
+    max-height: 800px;
+    overflow-y: scroll;
+}
+
+.store__menu {
+    display: none;
+}
+
+/* Đơn hàng */
+#content--style-order {
+    display: none;
+}
+
+.content .content__mid--order {
+    position: absolute;
+    border: solid  2px white;
+    top: 80px;
+    width: 95%;
+    height: 950px;
+    margin-top: 30px;
+    font-size: 1.5em;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(16, 25, 11);
+}
+
+.content__mid-header {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.content__mid--customer table {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.content__mid--customer th{
+    padding: 5px;
+    background-color: orange;
+    color: black;
+}
+
+.content__mid--customer .btn-delete{
+    border: solid 2px black;
+    margin: 5px 50px;
+}
+
+.content__mid--customer .btn-delete:hover{
+    color: white;
+    background: black;
+    cursor: pointer;
+}
+
+/* Toggle Button */
+.toggle-button input{
+    display: none;
+}
+
+.toggle-button label{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 25px;
+    background: #888;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 300ms linear;
+}
+
+.toggle-button label:before{
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    border-radius: 50%;
+    transition: left 300ms linear;
+}
+
+.toggle-button input:checked + label{
+    background: #00acee;
+}
+
+.toggle-button input:checked + label:before{
+    left: 28px;
+}
+.table th {
+    background-color: orange;
+}
+
+
+
+
+
+/* KHÁCH HÀNG */
+#content--style-customer {
+    display: none;
+}
+
+.content .content__mid--customer {
+    position: absolute;
+    border: solid  2px white;
+    top: 80px;
+    width: 95%;
+    height: 950px;
+    margin-top: 30px;
+    font-size: 1.5em;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(16, 25, 11);
+}
+
+.content__mid-header {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.content__mid--order table {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+.order__form td {
+    cursor: pointer;
+}
+.content__mid--order th{
+    padding: 5px;
+    background-color: orange;
+    color: black;
+}
+
+.content__mid--order .btn-delete{
+    border: solid 2px black;
+    margin: 5px 50px;
+}
+
+.content__mid--order .btn-delete:hover{
+    color: white;
+    background: black;
+    cursor: pointer;
+}
+.content__mid--order , 
+.content__mid--customer {
+    overflow: scroll;
+}
+
+/* detail order */
+.order__detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all linear 0.2s;
+
+    z-index: 1001;
+    display: none;
+}
+.order__info-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+@keyframes transDetailOrder {
+    from {
+        transform: translateY(-70%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+.order__info-wrap {
+    width: 450px;
+    height: 500px;
+    background-color: white;
+    
+    padding: 20px;
+    border-radius: 5px;
+    
+    overflow: scroll;
+    animation: transDetailOrder 0.2s linear forwards;
+}
+.order__info-header,
+.order__info--product h4 ,
+.order__info--customer h4 {
+    text-align: center;
+    margin-bottom: 20px
+}
+.order__info--customer h4 {
+    margin-top: 30px;
+}
+.order__info--product-list {
+    list-style: none;
+}
+.order__info-wrap p {
+    display: inline-block;
+}
+.order__info--customer-name-wrap ,
+.order__info--customer-phone-wrap ,
+.order__info--customer-address-wrap {
+    margin: 10px 0;
+}
+.order__info--print {
+    text-align: center;
+}
+.order__info--print-btn {
+    width: 50%;
+
+    padding: 10px;
+    margin-top: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: coral;
+    color: white;
+    cursor: pointer;
+}
+.order__name ,
+.order__total {
+    min-width: 200px;
+}
+
+
+
+
+
+
