@@ -30,9 +30,10 @@ function initAdmin() {
         // khởi tạo responsive khi resize
         if(window.innerWidth > 1024) {
             localStorage.setItem('reloadResponsive' , false)
+        }
         if(window.innerWidth < 1024) {
             localStorage.setItem('reloadResponsive' , true)
-        }
+        }  
     }
 }
 initAdmin()
