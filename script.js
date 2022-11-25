@@ -1576,8 +1576,14 @@ function handleForm () {
                     }
                 })
             }
+
+            let checkPhoneNumber = false 
+            if(isNaN(parseInt(phoneSignUp.value))) {
+                alert('Số điện thoại phải là số!')
+                checkPhoneNumber = true
+            }
     
-            if(!isEmailError && !isPasswordLength && !isPasswordConfirmLength && !checkEmailValid) {
+            if(!isEmailError && !isPasswordLength && !isPasswordConfirmLength && !checkEmailValid && !checkPhoneNumber) {
                 let signUpAccount = {}
                 signUpAccount.name = nameSignUp.value
                 signUpAccount.email = emailSignUp.value
@@ -1919,12 +1925,12 @@ function handleOrder () {
         })
     }
 
-    document.querySelectorAll('.order__state').forEach((state , index) => {
+    [...document.querySelectorAll('.order__state')].forEach((state , index) => {
         state.addEventListener('click' , (e) => {
             state.innerText = 'Hoàn thành'
 
             listOrder.forEach((orderArr,index) => {
-                if(orderArr[index].customer == e.target.parentElement.querySelector('.order__name').innerText) {
+                if(orderArr[0].customer == e.target.parentElement.querySelector('.order__name').innerText) {
                     orderArr[orderArr.length - 1].state = 'Hoàn thành'
                     localStorage.setItem('order' , JSON.stringify(listOrder))
                 }
@@ -1932,7 +1938,7 @@ function handleOrder () {
         })
     })
     
-    let orderItems = [...document.querySelectorAll('.order__tbody tr')]
+    let orderItems = [...document.querySelectorAll('.order__tbody tr .order__name')]
     const detailOrder = document.querySelector('.order__detail')
     const detailWrap = document.querySelector('.order__info-wrap')
 
@@ -1946,8 +1952,8 @@ function handleOrder () {
             let allTotal
             let allPro = ''
             listOrder.forEach((arrOrder,index) => {
-                if(arrOrder[index].customer == e.target.parentElement.querySelector('.order__name').innerText) {
-                    nameCustomer = arrOrder[index].customer
+                if(arrOrder[0].customer == e.target.parentElement.querySelector('.order__name').innerText) {
+                    nameCustomer = arrOrder[0].customer
                     allTotal = arrOrder[arrOrder.length - 1].sum
 
                     arrOrder.forEach(itemOrder => {
