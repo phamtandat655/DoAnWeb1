@@ -1956,8 +1956,9 @@ function handleOrder () {
             let addressCustomer
             let allTotal
             let allPro = ''
+
             listOrder.forEach((arrOrder,index) => {
-                if(arrOrder[0].customer == e.target.parentElement.querySelector('.order__name').innerText) {
+                if(arrOrder[0].customer == e.target.parentElement.querySelector('.order__name').innerText && arrOrder[arrOrder.length - 1].sum == e.target.parentElement.querySelector('.order__total').innerText) {
                     nameCustomer = arrOrder[0].customer
                     allTotal = arrOrder[arrOrder.length - 1].sum
 
