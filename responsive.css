@@ -87,6 +87,12 @@
     .cart__list {
         padding: 0 20px 0 0;
     }
+    .content__product--detail {
+        align-items: unset;
+    }
+    .content__product--detail-container {
+        margin-top: 150px;
+    }
 
     /* store */
     nav {

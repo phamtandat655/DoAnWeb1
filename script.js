@@ -26,7 +26,10 @@ function initAdmin() {
 
         Account.push(signUpAccount)
         localStorage.setItem('SignUp' , JSON.stringify(Account))
+    }
 
+    let testRespon = JSON.parse(localStorage.getItem('reloadResponsive'))
+    if(testRespon == null) {
         // khởi tạo responsive khi resize
         if(window.innerWidth > 1024) {
             localStorage.setItem('reloadResponsive' , false)
@@ -889,13 +892,15 @@ function productItem() {
     function renderProduct(newProducts) {
         productContainer.innerHTML = ''
         for( let i = (page - 1 )*productInOnePage ; i < page*productInOnePage ; i++) {
-            productContainer.innerHTML += `
-            <div class="content__product--item">
-                    <img src="${newProducts[i].image}" alt="" class="content__product--item-img">
-                    <h2 class="content__product--item-name">${newProducts[i].name}</h2>
-                    <p class="content__product--item-price">${newProducts[i].price}</p>
-            </div>`
-            productDetails()
+            if(newProducts[i]) {
+                productContainer.innerHTML += `
+                <div class="content__product--item">
+                        <img src="${newProducts[i].image}" alt="" class="content__product--item-img">
+                        <h2 class="content__product--item-name">${newProducts[i].name}</h2>
+                        <p class="content__product--item-price">${newProducts[i].price}</p>
+                </div>`
+                productDetails()
+            }
         }
     }
     // PAGINATION AND RENDER PRODUCTS
@@ -1890,8 +1895,8 @@ function responsiveMobile () {
 }
 responsiveMobile()
 
-window.addEventListener('resize' , (e) => reloadResponsive())
-function reloadResponsive() {
+window.addEventListener('resize' , (e) => reloadResponsiveProduct())
+function reloadResponsiveProduct() {
     // để tạo lại số trang và sản phẩm trên mobile và ipad
     if(JSON.parse(localStorage.getItem('reloadResponsive')) == true) {
         if(window.innerWidth > 1024) {
@@ -1905,7 +1910,7 @@ function reloadResponsive() {
         }  
     }
 }
-reloadResponsive()
+reloadResponsiveProduct()
 
 function handleOrder () {
     let listOrder = JSON.parse(localStorage.getItem('order'))
