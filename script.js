@@ -10,6 +10,37 @@ function contentSlider() {
 contentSlider()
 setInterval(contentSlider , 2000)
 
+function initAdmin() {
+    let test = JSON.parse(localStorage.getItem('SignUp'))
+
+    // localStorage.removeItem('SignUp')
+    if(test == null) {
+        let Account = []
+        let signUpAccount = {}
+
+        signUpAccount.name = 'Phạm Tấn Đạt'
+        signUpAccount.email = 'phamtandat655@gmail.com'
+        signUpAccount.phone = '0394047655'
+        signUpAccount.address = 'BC , TPHCM'
+        signUpAccount.password = '12345'
+
+        Account.push(signUpAccount)
+        localStorage.setItem('SignUp' , JSON.stringify(Account))
+    }
+
+    let testRespon = JSON.parse(localStorage.getItem('reloadResponsive'))
+    if(testRespon == null) {
+        // khởi tạo responsive khi resize
+        if(window.innerWidth > 1024) {
+            localStorage.setItem('reloadResponsive' , false)
+        }
+        if(window.innerWidth < 1024) {
+            localStorage.setItem('reloadResponsive' , true)
+        }  
+    }
+}
+initAdmin()
+
 function productItem() {
     const products = [{
         image : 'https://cdn.tgdd.vn/Products/Images/42/251192/iphone-14-pro-max-vang-thumb-600x600.jpg',
@@ -861,13 +892,15 @@ function productItem() {
     function renderProduct(newProducts) {
         productContainer.innerHTML = ''
         for( let i = (page - 1 )*productInOnePage ; i < page*productInOnePage ; i++) {
-            productContainer.innerHTML += `
-            <div class="content__product--item">
-                    <img src="${newProducts[i].image}" alt="" class="content__product--item-img">
-                    <h2 class="content__product--item-name">${newProducts[i].name}</h2>
-                    <p class="content__product--item-price">${newProducts[i].price}</p>
-            </div>`
-            productDetails()
+            if(newProducts[i]) {
+                productContainer.innerHTML += `
+                <div class="content__product--item">
+                        <img src="${newProducts[i].image}" alt="" class="content__product--item-img">
+                        <h2 class="content__product--item-name">${newProducts[i].name}</h2>
+                        <p class="content__product--item-price">${newProducts[i].price}</p>
+                </div>`
+                productDetails()
+            }
         }
     }
     // PAGINATION AND RENDER PRODUCTS
@@ -884,7 +917,8 @@ function productItem() {
             pagination.appendChild(pg)
         }
         const listPage = [...document.querySelectorAll('.page')]
-        listPage[0].classList.add('active')
+        if(listPage[0])
+            listPage[0].classList.add('active')
     
         listPage.forEach((pag) => {
             pag.addEventListener('click' , (e) => {
@@ -938,7 +972,8 @@ function productItem() {
         // console.log(newArrPro)
         quantityPage = Math.ceil(countProduct / 8)
         const firstPage = document.querySelector('.page:first-child')
-        firstPage.click()
+        if(firstPage)
+            firstPage.click()
         handlePagination(newArrPro)
     })
    
@@ -1548,8 +1583,14 @@ function handleForm () {
                     }
                 })
             }
+
+            let checkPhoneNumber = false 
+            if(isNaN(parseInt(phoneSignUp.value))) {
+                alert('Số điện thoại phải là số!')
+                checkPhoneNumber = true
+            }
     
-            if(!isEmailError && !isPasswordLength && !isPasswordConfirmLength && !checkEmailValid) {
+            if(!isEmailError && !isPasswordLength && !isPasswordConfirmLength && !checkEmailValid && !checkPhoneNumber) {
                 let signUpAccount = {}
                 signUpAccount.name = nameSignUp.value
                 signUpAccount.email = emailSignUp.value
@@ -1775,18 +1816,20 @@ function handleFormStore () {
     const customerList = document.querySelector('.customer__list')
 
     let arrCustomer = JSON.parse(localStorage.getItem('SignUp'))
-    arrCustomer.forEach((customer,index) => {
-        if(customer.email != 'phamtandat655@gmail.com') {
-            let tr = document.createElement('tr')
-            tr.innerHTML = `<td class="customer__number"> ${index} </td>
-            <td class="customer__name"> ${customer.name} </td>
-            <td class="customer__mail"> ${customer.email} </td>
-            <td class="customer__phone"> ${customer.phone} </td>
-            <td > <div class="customer__delete btn-delete">Xóa</div> </td>`
-    
-            customerList.appendChild(tr)
-        }
-    })
+    if(arrCustomer) {
+        arrCustomer.forEach((customer,index) => {
+            if(customer.email != 'phamtandat655@gmail.com') {
+                let tr = document.createElement('tr')
+                tr.innerHTML = `<td class="customer__number"> ${index} </td>
+                <td class="customer__name"> ${customer.name} </td>
+                <td class="customer__mail"> ${customer.email} </td>
+                <td class="customer__phone"> ${customer.phone} </td>
+                <td > <div class="customer__delete btn-delete">Xóa</div> </td>`
+        
+                customerList.appendChild(tr)
+            }
+        })
+    }
 
     function removeCustomer () {
         const customerDeleteBtns = document.querySelectorAll('.customer__delete')
@@ -1854,8 +1897,8 @@ function responsiveMobile () {
 }
 responsiveMobile()
 
-window.addEventListener('resize' , (e) => reloadResponsive())
-function reloadResponsive() {
+window.addEventListener('resize' , (e) => reloadResponsiveProduct())
+function reloadResponsiveProduct() {
     // để tạo lại số trang và sản phẩm trên mobile và ipad
     if(JSON.parse(localStorage.getItem('reloadResponsive')) == true) {
         if(window.innerWidth > 1024) {
@@ -1869,30 +1912,32 @@ function reloadResponsive() {
         }  
     }
 }
-reloadResponsive()
+reloadResponsiveProduct()
 
 function handleOrder () {
     let listOrder = JSON.parse(localStorage.getItem('order'))
     const orderTBody = document.querySelector('.order__tbody')
     
-    listOrder.forEach((orderArr,index) => {
-        let tr = document.createElement('tr')
-        tr.innerHTML = `<td class="order__number"> ${index + 1} </td>
-        <td class="order__name"> ${orderArr[orderArr.length - 1].customer} </td>
-        <td class="order__total"> ${orderArr[orderArr.length - 1].sum} </td>
-        <td style="height: 60px; min-width: 200px; padding-left: 10px;" class="order__state">
-            ${orderArr[orderArr.length - 1].state}
-        </td>`
-        
-        orderTBody.appendChild(tr)
-    })
+    if(listOrder) {
+        listOrder.forEach((orderArr,index) => {
+            let tr = document.createElement('tr')
+            tr.innerHTML = `<td class="order__number"> ${index + 1} </td>
+            <td class="order__name"> ${orderArr[orderArr.length - 1].customer} </td>
+            <td class="order__total"> ${orderArr[orderArr.length - 1].sum} </td>
+            <td style="height: 60px; min-width: 200px; padding-left: 10px;" class="order__state">
+                ${orderArr[orderArr.length - 1].state}
+            </td>`
+            
+            orderTBody.appendChild(tr)
+        })
+    }
 
-    document.querySelectorAll('.order__state').forEach((state , index) => {
+    [...document.querySelectorAll('.order__state')].forEach((state , index) => {
         state.addEventListener('click' , (e) => {
             state.innerText = 'Hoàn thành'
 
             listOrder.forEach((orderArr,index) => {
-                if(orderArr[index].customer == e.target.parentElement.querySelector('.order__name').innerText) {
+                if(orderArr[0].customer == e.target.parentElement.querySelector('.order__name').innerText) {
                     orderArr[orderArr.length - 1].state = 'Hoàn thành'
                     localStorage.setItem('order' , JSON.stringify(listOrder))
                 }
@@ -1900,7 +1945,7 @@ function handleOrder () {
         })
     })
     
-    let orderItems = [...document.querySelectorAll('.order__tbody tr')]
+    let orderItems = [...document.querySelectorAll('.order__tbody tr .order__name')]
     const detailOrder = document.querySelector('.order__detail')
     const detailWrap = document.querySelector('.order__info-wrap')
 
@@ -1913,9 +1958,10 @@ function handleOrder () {
             let addressCustomer
             let allTotal
             let allPro = ''
+
             listOrder.forEach((arrOrder,index) => {
-                if(arrOrder[index].customer == e.target.parentElement.querySelector('.order__name').innerText) {
-                    nameCustomer = arrOrder[index].customer
+                if(arrOrder[0].customer == e.target.parentElement.querySelector('.order__name').innerText && arrOrder[arrOrder.length - 1].sum == e.target.parentElement.querySelector('.order__total').innerText) {
+                    nameCustomer = arrOrder[0].customer
                     allTotal = arrOrder[arrOrder.length - 1].sum
 
                     arrOrder.forEach(itemOrder => {
@@ -1943,7 +1989,6 @@ function handleOrder () {
                                     ${allPro}
                                 </ul>
                             </div>
-
                             <div class="order__info--customer">
                                 <h4>THÔNG TIN KHÁCH HÀNG</h4>
                                 <div class="order__info--customer-name-wrap">
@@ -1959,7 +2004,6 @@ function handleOrder () {
                                     <p class="order__info--customer-address">${addressCustomer}</p>
                                 </div>
                             </div>
-
                             <div class="order__info--total-wrap">
                                 Tổng giá trị : <p class="order__info--total">${allTotal}</p>
                             </div>
@@ -1980,13 +2024,3 @@ function handleOrder () {
     })
 }
 handleOrder()
-
-
-
-
-
-
-
-
-
-

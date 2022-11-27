@@ -373,7 +373,7 @@ nav ul li a:hover i {
     width: 100%;
     text-align: center;
 }
-.order__form td {
+.order__tbody tr .order__name {
     cursor: pointer;
 }
 .content__mid--order th{
@@ -483,9 +483,3 @@ nav ul li a:hover i {
 .order__total {
     min-width: 200px;
 }
-
-
-
-
-
-

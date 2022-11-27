@@ -9,6 +9,11 @@
     .content__slide-img {
         min-width: 100%;
     }
+    .header__about-info-search-input {
+        min-width: 150px;
+        padding: 5px;
+        font-size: 16px
+    }
 }
 
 /* ipad */
@@ -86,6 +91,12 @@
     }
     .cart__list {
         padding: 0 20px 0 0;
+    }
+    .content__product--detail {
+        align-items: unset;
+    }
+    .content__product--detail-container {
+        margin-top: 150px;
     }
 
     /* store */
