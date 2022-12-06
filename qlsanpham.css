@@ -483,3 +483,6 @@ nav ul li a:hover i {
 .order__total {
     min-width: 200px;
 }
+.order__state {
+    cursor: pointer;
+}
